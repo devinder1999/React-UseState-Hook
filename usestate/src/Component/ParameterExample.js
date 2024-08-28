@@ -1,8 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
-import ParameterExample from './ParameterExample';
 
-const NormalExample = () => {
+const ParameterExample = () => {
 
   const counterStyle = {
     padding: '10px',
@@ -39,35 +38,40 @@ const NormalExample = () => {
         */
         const[num , Setnum] = useState(1);
 
-        function inc()
+        /*function inc(n); -->inside bracket(n) N is the parameter if we use parameter in call back function
+        
+        Call back function --> onclick={()=>inc()} This is the example of Call back arrow Function
+        
+        onclick={()=>inc(2)}--> Inside the inc(2) the 2 is pass a argument inside inc() Function
+
+        */
+
+        function inc(n)
         {
-            Setnum(num + 1);
+            Setnum(num + n);
         }
-        function dec()
+        function dec(n)
         {
-            Setnum(num - 1);
+            Setnum(num - n);
         }
 
   return (
     <div style={{ textAlign: 'center',backgroundColor:'lightblue'}}>
       <div style={counterStyle}>
 
-        <h1>This is The normal usestate hook program without any Parameter</h1>
+        <h1>This is The normal usestate hook program with Pass a Parameter</h1>
 
             <h1 style={number}>{num}</h1>
 
       </div>
 
-        <button style={btn} onClick={inc}>increment</button>
+        <button style={btn} onClick={()=>inc(2)}>increment</button>
 
-        <button style={btn} onClick={dec}>decrement</button>
-
-
-        <ParameterExample/>
+        <button style={btn} onClick={()=>dec(1)}>decrement</button>
 
     </div>
  
   )
   
 }
-export default NormalExample
+export default ParameterExample
